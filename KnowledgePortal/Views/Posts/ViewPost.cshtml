@@ -1,0 +1,18 @@
+﻿@model KnowledgePortal.Models.Post
+@{
+    ViewBag.Title = "ViewPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br><br>
+<div class="jumbotron">  
+    <div class="card bg-dark text-white">
+          <div class="card-body">
+            <h4 class="card-title" style="color:black; text-align:center;font-size:x-large;">&nbsp; @Model.Summary</h4>
+              <p class="jumbotron-card-text" style="color:black; font-size:larger;">
+                @Model.Description
+            </p>
+           </div>
+    </div>
+     @Html.ActionLink("Go Back", "Index", "Posts", new { @class = "btn btn-info", style = "background-color: #eb6864;border-color: #f58a87" })
+</div>

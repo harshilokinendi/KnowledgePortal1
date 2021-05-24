@@ -1,0 +1,97 @@
+﻿.Post-cards {
+    padding-top: 10px;
+    padding-left: 5px;
+    border-style: groove;
+    border-color: coral;
+    border-radius: 15px 15px 15px 15px;
+    background-color: white;
+    background-image: linear-gradient(#f7f0f0,white);
+    text-decoration: none;
+    color: #ffffff;
+}
+.Post-cards-title {
+    color: coral;
+    text-align: center;
+    font-size: x-large;
+}
+.Post-labels {
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+    font-size: 11px;
+    color: coral;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: coral;
+    border-radius: 3px;
+}
+.Display-post-dates {
+    float: right;
+    color: coral;
+    padding-block: auto;
+    display: inline-block;
+    padding: .4em .5em;
+    margin: 2px 2px 2px 0;
+}
+.jumbotron {
+    padding-top: 10px;
+    border-style: groove;
+    border-color: coral;
+    border-radius: 15px 15px 15px 15px;
+    background-color: white; /*for compatibility with older browsers*/
+    background-image: linear-gradient(#f7f0f0,white); /* text styles */
+    text-decoration: none;
+    color: coral;
+}
+.jumbotron-card-text {
+    white-space: pre-wrap;
+    font-size: large;
+    font-family: sans-serif;
+}
+.navbar navbar-inverse navbar-fixed-top {
+    background-color: #eb504b;
+    border-color: #f58a87";
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+.
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+.field-validation-error{
+    color:red
+}
+.input-validation-error{
+    border: 2px solid red;
+}
+.card text-white bg-primary mb-10 {
+    border: thick;
+    border-radius: 15px 15px 15px 15px;
+    border-block-color: #f58a87;
+    background-color: #f5ebeb;
+    
+}
+

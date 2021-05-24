@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top"  style = "background-color: #eb504b; border-color: #f58a87" >
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+           
+            <div class="navbar-collapse collapse">
+                <form asp-controller="Posts" asp-action="Search" class="form-inline justify-content-center" style="position: absolute; width: 100%; left: 0;padding-top:5px; text-align: center;">
+                    <p>
+
+                        <input type="search" name="SearchString" class="form-control-static" placeholder=" Search By Tag Name" style=" color:coral;border-radius: 15px; width: 300px; border-color:#ffffff ;" />
+
+                        <input type="submit" value="Search" class="btn btn-info" style="background-color: #eb6864;border-color: #f58a87 ;margin-left:5px;" />
+                    </p>
+                </form>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Knowledge Repository", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Posts", "Index", "Posts")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Knowledge Repository</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

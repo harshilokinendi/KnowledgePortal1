@@ -1,0 +1,35 @@
+﻿@model KnowledgePortal.Models.Post
+@{
+    ViewBag.Title = "CreateForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Save", "Posts"))
+{
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.TagNames)
+        @Html.TextBoxFor(m => m.TagNames, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.TagNames)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Summary)
+        @Html.TextAreaFor(m => m.Summary, new { @class = "form-control", @cols = "100", @rows = "3" })
+        @Html.ValidationMessageFor(m => m.Summary)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @cols = "100", @rows = "10", @style = "width:100%;" })
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    }
