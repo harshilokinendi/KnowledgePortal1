@@ -1,0 +1,94 @@
+﻿@model KnowledgePortal.ViewModel.PostCommentViewModel
+@using Microsoft.AspNet.Identity;
+
+
+@using System.Collections.Generic;
+@{
+    ViewBag.Title = "ViewPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br>
+<br>
+<div class="jumbotron">
+    <div class="card bg-dark text-white">
+        <div class="card-body">
+            <label style="float:right;">
+                @Html.ActionLink(" ", "PostLiked", "Posts", new { id = Model.posts.Id, UserId = User.Identity.GetUserId() }, new { @class = "fas fa-thumbs-up fa-2x", style = "height:5px; color:#eb504b;" })
+
+                <text style=" margin: 2px 2px 2px 0; font-size: 11px;background-color:#eb504b ;color: white; line-height: 1; white-space: nowrap; text-decoration: none; text-align: center; border-width: 1px; border-style: solid; border-color: #eb504b; border-radius: 10px; padding-left:4px; padding-right:4px;padding-bottom:1px;padding-top:1px;
+ "> <b>@Model.posts.like</b></text>
+</label>
+<h4 class="card-title" style="        color: #eb504b;
+        text-align: center;
+        font-size: x-large;
+
+        margin-block: 4px 7px;
+        margin-bottom: 4px;
+        padding:5px 0px 0px 0px;
+
+">
+    <b>@Model.posts.Summary</b>
+</h4>
+<p class="jumbotron-card-text" style="color:black; font-size:larger;">
+    @Model.posts.Description
+</p>
+</div>
+</div>
+@Html.ActionLink("Go Back", null, null, null, new { @class = "btn btn-info", style = "background-color: #eb504b;border-color: #f58a87", href = Request.UrlReferrer })
+
+@Html.ActionLink("Add Comment", "New", "Comments", null, new { @class = "btn btn-info", style = "background-color:#eb504b;border-color: #f58a87; float:right;" })
+
+
+
+</div>
+
+
+
+
+@{
+    foreach (var comment in Model.comments)
+    {
+
+        string UserName = comment.UserName;
+        string Name = "@";
+        for (int i = 0; i < UserName.Length; i++)
+        {
+            if (UserName[i] == '@')
+            { break; }
+
+            else
+            { Name += UserName[i]; }
+        }
+
+        var dateString = comment.LastUpdated.Value.ToString("MMMM dd, yyyy");
+
+        <div style="padding-left:350px">
+
+            <div class="Comments" style="max-width: 80rem;
+        border-radius: 0px 15px 20px 20px;
+        background-image: linear-gradient(#faebec,white) !important;
+        color: black !important;
+        background-clip: border-box;
+        border: 1px solid #eb504b;">
+                <div class="Comment-header" style="
+    color:#eb504b !important;
+        font-size: medium;
+        font-family: sans-serif;
+        padding-left: 5px;
+        justify-content: left;
+        text-align: left;
+        border-radius: 0px 10px 0px 0px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #eb504b;
+        margin-block: 4px 7px;
+        margin-bottom: 4px;">
+                    <b> @Name<text style="float:right;padding-right:5px;">@dateString</text></b>
+                </div>
+
+                <div class="comments-description" style=" justify-content: center; white-space: pre-wrap; font-size: medium; font-family: sans-serif; padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">  @comment.Description</div>
+
+            </div>
+        </div>
+        <br />
+    }
+}
