@@ -21,6 +21,8 @@ namespace KnowledgePortal.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Likes> Likes { get; set; }
         public ApplicationDbContext()
             : base("DbConnectionString", throwIfV1Schema: false)
         {

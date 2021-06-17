@@ -10,12 +10,12 @@ namespace KnowledgePortal.Models
     public class Post
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
-      
+        public string Userid { get; set; }
+
         [Required]
-        [Display(Name ="Tags")]
+        [Display(Name = "Tags")]
         public string TagNames { get; set; }
-       
+
         [Required]
         [StringLength(150)]
         public string Summary { get; set; }
@@ -25,5 +25,7 @@ namespace KnowledgePortal.Models
         public string Description { get; set; }
         public DateTime? CreatedOn { get; set; }
         public DateTime? LastUpdated { get; set; }
+        public int like { get; set; }
+        public int dislike { get; set; }
     }
 }

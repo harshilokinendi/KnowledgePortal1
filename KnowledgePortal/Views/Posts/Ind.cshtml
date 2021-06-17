@@ -1,0 +1,71 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using Microsoft.AspNet.Identity;
+
+@model IPagedList<KnowledgePortal.Models.Post>
+@{
+    ViewBag.Title = "Index";
+
+}
+@if (!Model.Any())
+{
+    <p>Not Found Any Posts Yet!!</p>
+    <p>
+        @Html.ActionLink("Create Post", "New", "Posts", null, new { @class = "btn btn-info", style = "background-color: #eb504b; border-color: #f58a87" })
+    </p>
+}
+else
+{
+    <br />
+    @Html.ActionLink("Create Post", "New", "Posts", null, new { @class = "btn btn-info", style = "background-color:#eb504b;border-color: #f58a87; float:right" })
+    <br />
+    <br />
+    foreach (var post in Model)
+    {
+        <div class="Post-cards">
+            <div class="card-body">
+                <h4 class="Post-cards-title">&nbsp; @post.Summary</h4>
+                <center>
+                    @{ string[] Tagslist = post.TagNames.Split(',');
+                        <label style="        color: coral;
+        margin-right: 5px;">Tags:</label>
+                        foreach (var tagname in Tagslist)
+                        {
+                            <label class="Post-labels">@tagname</label>
+                        }
+                    }
+                </center>
+            </div>
+            @Html.ActionLink("View Post", "ViewPost", "Posts", new { id = post.Id }, new { @class = "btn btn-info", style = "background-color: #eb504b;border-color: #f58a87; margin-bottom:5px;" })
+            @{
+                var userid = User.Identity.GetUserId();
+                if (userid == post.Userid)
+                {
+                    @Html.ActionLink("Edit Post", "Edit", "Posts", new { id = post.Id }, new { @class = "btn btn-info", style = "background-color: #eb504b;border-color: #f58a87;margin-bottom:5px;margin-left:5px;" })
+                }
+                if (post.LastUpdated.HasValue)
+                {
+                    var dateString = post.LastUpdated.Value.ToString("MMMM dd, yyyy");
+                    <label class="Display-post-dates">Last Modified: @dateString</label>
+                }
+                if (post.CreatedOn.HasValue)
+                {
+                    var dateString = post.CreatedOn.Value.ToString("MMMM dd, yyyy");
+                    <label class="Display-post-dates">Created On: @dateString</label>
+                }
+            }
+        </div>
+        <br />
+    }
+
+}
+
+@Html.PagedListPager(Model, page => Url.Action("Ind", new
+{
+    page,
+    SearchString = Request.QueryString["SearchString"]
+}),
+new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded, DisplayPageCountAndCurrentLocation = true }
+)
+
+
